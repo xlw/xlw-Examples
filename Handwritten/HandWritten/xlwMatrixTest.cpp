@@ -49,36 +49,7 @@ extern "C" {
         EXCEL_END;
     }
 
-    LPXLOPER EXCEL_EXPORT xlMatrixTest4(LPXLOPER inRows, LPXLOPER inCols) {
-        EXCEL_BEGIN;
-        XlfOper4 xlRows(inRows);
-        XlfOper4 xlCols(inCols);
-
-        RW nbRows(xlRows.AsInt());
-        RW nbCols(xlCols.AsInt());
-        XlfOper4 result(nbRows, nbCols);
-        // may be truncated
-        nbRows = result.rows();
-        nbCols = result.columns();
-
-        for(RW row(0); row < nbRows; ++row)
-        {
-            for(RW col(0); col < nbCols; ++col)
-            {
-                if(row == col)
-                {
-                    result(row, col) = 1.0;
-                }
-                else
-                {
-                    result(row, col) = 0.0;
-                }
-            }
-        }
-
-        return result;
-        EXCEL_END_4;
-    }
+    
 
     LPXLOPER12 EXCEL_EXPORT xlMatrixTest12(LPXLOPER12 inRows, LPXLOPER12 inCols) {
         EXCEL_BEGIN;

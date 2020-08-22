@@ -53,19 +53,6 @@ extern "C" {
         EXCEL_END;
     }
 
-    LPXLOPER EXCEL_EXPORT xlConcat4(LPXLOPER inStr1, LPXLOPER inStr2) {
-        EXCEL_BEGIN;
-        XlfOper4 xlStr1(inStr1);
-        XlfOper4 xlStr2(inStr2);
-
-        // Converts the 2 strings.
-        std::string str1 = xlStr1.AsString();
-        std::string str2 = xlStr2.AsString();
-        // Returns the concatenation of the 2 string as an XlfOper.
-        std::string ret = str1+str2;
-        return XlfOper4(ret);
-        EXCEL_END_4;
-    }
 
     LPXLOPER12 EXCEL_EXPORT xlConcat12(LPXLOPER12 inStr1, LPXLOPER12 inStr2) {
         EXCEL_BEGIN;

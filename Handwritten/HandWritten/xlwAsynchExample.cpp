@@ -62,8 +62,8 @@ extern "C" {
             XlfExcel::Instance().Call(xlAsyncReturn, 0, 2, &opers[0], result);
         }
 
-        xlw::impl::XlfOperProperties<LPXLFOPER>::freeCreatedUsingNew(&opers[1]);
-        xlw::impl::XlfOperProperties<LPXLFOPER>::freeCreatedUsingNew(&opers[2]);
+        xlw::XlfOperProperties::freeCreatedUsingNew(&opers[1]);
+        xlw::XlfOperProperties::freeCreatedUsingNew(&opers[2]);
         TempMemory::FreeMemoryCreatedUsingNew(opers);
         return 0;
     }
@@ -78,14 +78,14 @@ extern "C" {
             }
 
             XLFOPER* opers = TempMemory::GetMemoryUsingNew<XLFOPER>(3);
-            xlw::impl::XlfOperProperties<LPXLFOPER>::copyUsingNew(asyncId, &opers[0]);
-            xlw::impl::XlfOperProperties<LPXLFOPER>::copyUsingNew(inStr1, &opers[1]);
-            xlw::impl::XlfOperProperties<LPXLFOPER>::copyUsingNew(inStr2, &opers[2]);
+            xlw::XlfOperProperties::copyUsingNew(asyncId, &opers[0]);
+            xlw::XlfOperProperties::copyUsingNew(inStr1, &opers[1]);
+            xlw::XlfOperProperties::copyUsingNew(inStr2, &opers[2]);
 
             if (CreateThread(NULL, 0, xlSlowConcatThread, opers, 0, NULL) == NULL)
             {
-                xlw::impl::XlfOperProperties<LPXLFOPER>::freeCreatedUsingNew(&opers[1]);
-                xlw::impl::XlfOperProperties<LPXLFOPER>::freeCreatedUsingNew(&opers[2]);
+                xlw::XlfOperProperties::freeCreatedUsingNew(&opers[1]);
+                xlw::XlfOperProperties::freeCreatedUsingNew(&opers[2]);
                 TempMemory::FreeMemoryCreatedUsingNew(opers);
                 THROW_XLW("Can't create thread");
             }
